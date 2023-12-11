@@ -1,63 +1,123 @@
-import React from 'react'
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import Header from "../../components/Header";
-import '@/components/styles/Cuentas.module.css';
-import SeccionDerecha from "../../components/SeccionDerecha";
-import SeccionIzquierda from "../../components/SeccionIzquierda";
+import "@/components/styles/Cuentas.module.css";
 import Footer from "../../components/Footer";
-import { useState,useEffect } from 'react';
 
-async function fetchData(context) {
+async function fetchData(id) {
   try {
-    const response = await fetch(`http://127.0.0.1:8000/myapp/api/v1/cuenta/${context}`);
+    // Realizar la solicitud a la API utilizando el ID ingresado
+    const response = await fetch(
+      `http://127.0.0.1:8000/myapp/api/v1/cliente/${id}`
+    );
     const data = await response.json();
+    console.log(data);
+    console.log(typeof data);
     return data;
   } catch (error) {
-    console.error('Error fetching data:', error);
-    throw error;
+    console.error("Error al consultar la API:", error);
+    throw new Error("Ocurrió un error al consultar la API.");
   }
 }
 
-function cuenta() {
-  const [cuentaData, setCuentaData] = useState(null);
+//Obtener cuentas
+async function fetchDataCuenta(id) {
+  try {
+    // Realizar la solicitud a la API utilizando el ID ingresado
+    const response = await fetch(`http://127.0.0.1:8000/myapp/api/v1/cuenta`);
+    const data = await response.json();
 
-  useEffect(() => {
-    const fetchDataAsync = async () => {
-      try {
-        const data = await fetchData(1); //Arreglar
-        setCuentaData(data);
-        console.log(data)
-      } catch (error) {
-        // Manejar el error, por ejemplo, mostrar un mensaje al usuario
-        console.error('Error:', error);
-      }
-    };
+    // Convertir los valores del objeto a un array
+    const arrayDatos = Object.values(data);
 
-    fetchDataAsync();
-  }, []);
-  return (
-    <>  
-      <Header />
-      <main class="flex items-center">
-        
-        <div class="contenedor flex justify-center items-center gap-5 pt-5">
-          {cuentaData && (
-            <div>
-              <h1>Datos del cliente logeado</h1>
-              <p>ID: {cuentaData.customer_id}</p>
-              <p>Nombre: {cuentaData.customer_name}</p>
-              <p>Apellido: {cuentaData.customer_surname}</p>
-              <p>DNI: {cuentaData.customer_dni}</p>
-              <p>Nacimiento: {cuentaData.dob}</p>
-              <p>branch_id: {cuentaData.branch_id}</p>
-              <p>Tipo cliente: {cuentaData.tipocliente}</p>
-              <p>Tarjeta: {cuentaData.tarjeta}</p>
-            </div>
-          )}
-        </div>
-      </main>
-      <Footer/>
-    </>
-  )
+    // Filtrar el array
+    const datosFiltrados = arrayDatos.filter(
+      (item) => item.customer_id === Number(id)
+    );
+
+    return datosFiltrados;
+  } catch (error) {
+    console.error("Error al consultar la API:", error);
+    throw new Error("Ocurrió un error al consultar la API en cuenta.");
+  }
 }
 
-export default cuenta
+function ResultadoConsulta({ data }) {
+  console.log(data.apiDataCuenta);
+  console.log(data.apiDataCuenta.account_id);
+  return (
+    <>
+      <div>
+        <h1>Cliente numero: {data.apiData.customer_id} </h1>
+        <p>Nombre: {data.apiData.customer_name}</p>
+        <p>Apellido: {data.apiData.customer_surname}</p>
+        <p>DNI: {data.apiData.customer_dni}</p>
+        <p>Nacimiento: {data.apiData.dob}</p>
+        <p>branch_id: {data.apiData.branch_id}</p>
+        <p>Tipo cliente: {data.apiData.tipocliente}</p>
+      </div>
+      <hr />
+      <h2>Datos de la Cuentas</h2>
+      <hr />
+      {data.apiDataCuenta.map((cuenta) => (
+        <div key={cuenta.account_id}>
+          <p>Account ID: {cuenta.account_id}</p>
+          <p>Customer ID: {cuenta.customer_id}</p>
+          <p>Balance: {cuenta.balance}</p>
+          <p>IBAN: {cuenta.iban}</p>
+          <p>Tipo de Cuenta: {cuenta.tipocuenta}</p>
+          <hr />
+        </div>
+      ))}
+    </>
+  );
+}
+
+function ConsultaAPI() {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const [inputId, setInputId] = useState(id || "");
+  const [apiData, setApiData] = useState(null);
+  const [apiDataCuenta, setApiDataCuenta] = useState(null);
+
+  const consultarAPI = async () => {
+    try {
+      const data = await fetchData(inputId);
+      setApiData(data);
+      const dataCuenta = await fetchDataCuenta(inputId);
+      //console.log(dataCuenta)
+      setApiDataCuenta(dataCuenta);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  return (
+    <>
+      <Header />
+      <div>
+        <h1>Datos del cliente</h1>
+        <label htmlFor="idInput">Ingrese el ID:</label>
+        <input
+          type="text"
+          id="idInput"
+          value={inputId}
+          onChange={(e) => setInputId(e.target.value)}
+        />
+        <button type="button" onClick={consultarAPI}>
+          Consultar
+        </button>
+        <div>
+          {apiData && apiDataCuenta && (
+            <ResultadoConsulta data={{ apiData, apiDataCuenta }} />
+          )}
+        </div>
+        <div></div>
+      </div>
+      <Footer />
+    </>
+  );
+}
+
+export default ConsultaAPI;

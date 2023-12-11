@@ -22,6 +22,8 @@ const Header = () => {
         <Link href='/transferencias' className={router === '/transferencias' ? `${styles.active}` : ''}>Transferencias</Link>
         <Link href='/pagos' className={router === '/pagos' ? `${styles.active}` : ''}>Pagos</Link>
         <Link href='/ayuda' className={router === '/ayuda' ? `${styles.active}` : ''}>Ayuda</Link>
+        <Link href='/prestamosCliente' className={router === '/prestamosCliente' ? `${styles.active}` : ''}>Prestamos Cliente</Link>
+        <Link href='/prestamosSucursal' className={router === '/prestamosSucursal' ? `${styles.active}` : ''}>Prestamos Sucursal</Link>
         <Link href='/iniciar-sesion' className={router === '/iniciar-sesion' ? `${styles.active}` : ''}>Iniciar Sesion</Link>
       </ul>
     </div>
@@ -34,6 +36,8 @@ const Header = () => {
     <Link href='/transferencias' className={`${router === "/transferencias" ? `${styles.active}` : ""} hover:text-white hover:duration-700`}>Transferencias</Link>
     <Link href='/pagos' className={`${router === "/pagos" ? `${styles.active}` : ""} hover:text-white hover:duration-700`}>Pagos</Link>
     <Link href='/ayuda' className={`${router === "/ayuda" ? `${styles.active}` : ""} hover:text-white hover:duration-700`}>Ayuda</Link>
+    <Link href='/prestamosCliente' className={`${router === "/prestamosCliente" ? `${styles.active}` : ""} hover:text-white hover:duration-700`}>Prestamos Cliente</Link>
+    <Link href='/prestamosSucursal' className={`${router === "/prestamosSucursal" ? `${styles.active}` : ""} hover:text-white hover:duration-700`}>Prestamos Sucursal</Link>
     <Link href='/iniciarsesion' className={`${router === "/iniciarsesion" ? `${styles.active}` : ""} hover:text-white hover:duration-700`}>Iniciar Sesion</Link>
     </ul>
   </div>
