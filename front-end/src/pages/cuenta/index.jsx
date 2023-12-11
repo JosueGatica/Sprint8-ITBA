@@ -4,12 +4,14 @@ import Header from "../../components/Header";
 import "@/components/styles/Cuentas.module.css";
 import Footer from "../../components/Footer";
 
+//Funcion asincronca para obtener los datos del cliente
 async function fetchData(id) {
   try {
     // Realizar la solicitud a la API utilizando el ID ingresado
     const response = await fetch(
       `http://127.0.0.1:8000/myapp/api/v1/cliente/${id}`
     );
+    //Convierto a json
     const data = await response.json();
     console.log(data);
     console.log(typeof data);
@@ -20,17 +22,17 @@ async function fetchData(id) {
   }
 }
 
-//Obtener cuentas
+///Funcion asincronca para obtener los datos de la cuenta, vinculada con un cliente
 async function fetchDataCuenta(id) {
   try {
-    // Realizar la solicitud a la API utilizando el ID ingresado
+    // Realizar la solicitud a la API
     const response = await fetch(`http://127.0.0.1:8000/myapp/api/v1/cuenta`);
     const data = await response.json();
 
-    // Convertir los valores del objeto a un array
+    // Converti los valores del objeto a un array
     const arrayDatos = Object.values(data);
 
-    // Filtrar el array
+    // Filtrar el array segun el id del cliente (ambos comparten customer_id)
     const datosFiltrados = arrayDatos.filter(
       (item) => item.customer_id === Number(id)
     );
@@ -42,6 +44,7 @@ async function fetchDataCuenta(id) {
   }
 }
 
+///Funcion asincronca para obtener los datos de las tarjetas del cliente
 async function fetchTarjetas(clientes){
   try {
     // Realizar la solicitud a la API
@@ -51,7 +54,7 @@ async function fetchTarjetas(clientes){
     // Convertir los valores del objeto a un array
     const arrayDatos = Object.values(data);
 
-    // Filtrar el array
+    // Filtrar el array segun el id de la tarjeta
     const datosFiltrados = arrayDatos.filter(
       (item) => item.id === clientes.tarjeta
     );
@@ -65,9 +68,8 @@ async function fetchTarjetas(clientes){
   }
 }
 
+//Funcion que contenido el contenido a mostrar dado por la API
 function ResultadoConsulta({ data }) {
-  //console.log(data.apiDataCuenta);
-  //console.log(data.apiDataCuenta.account_id);
   return (
     <>
       <div>
@@ -110,15 +112,18 @@ function ResultadoConsulta({ data }) {
   );
 }
 
+//Funcion a exportar, que realiza las consultas
 function ConsultaAPI() {
   const router = useRouter();
   const { id } = router.query;
 
+  //Defino useState
   const [inputId, setInputId] = useState(id || "");
   const [apiData, setApiData] = useState(null);
   const [apiDataCuenta, setApiDataCuenta] = useState(null);
   const [apiDataTarjeta, setApiDataTarjeta] = useState(null);
 
+  //Realizo las consultas a la api y guardo los estados
   const consultarAPI = async () => {
     try {
       const data = await fetchData(inputId);
@@ -136,6 +141,7 @@ function ConsultaAPI() {
     }
   };
 
+  //Lo que voy a mostrar
   return (
     <>
       <Header />

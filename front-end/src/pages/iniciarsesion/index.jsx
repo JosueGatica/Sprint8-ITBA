@@ -1,7 +1,7 @@
-// pages/login.js
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
+/*NO FUNCIONA*/
 export default function LoginPage() {
   const [idUsuario, setIdUsuario] = useState('');
   const router = useRouter();

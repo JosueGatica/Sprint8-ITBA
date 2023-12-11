@@ -4,6 +4,7 @@ import Header from "../../components/Header";
 import "@/components/styles/Cuentas.module.css";
 import Footer from "../../components/Footer";
 
+//Obtengo los datos del cliente provenientes de la API
 async function fetchData(id) {
   try {
     // Realizar la solicitud a la API utilizando el ID ingresado
@@ -11,8 +12,6 @@ async function fetchData(id) {
       `http://127.0.0.1:8000/myapp/api/v1/cliente/${id}`
     );
     const data = await response.json();
-    console.log(data);
-    console.log(typeof data);
     return data;
   } catch (error) {
     console.error("Error al consultar la API:", error);
@@ -20,17 +19,17 @@ async function fetchData(id) {
   }
 }
 
-//Obtener prestamos
+//Obtener prestamos pertenecientes a ese cliente
 async function fetchPrestamo(id) {
   try {
-    // Realizar la solicitud a la API utilizando el ID ingresado
+    // Realizar la solicitud a la API
     const response = await fetch(`http://127.0.0.1:8000/myapp/api/v1/prestamo`);
     const data = await response.json();
 
     // Convertir los valores del objeto a un array
     const arrayDatos = Object.values(data);
 
-    // Filtrar el array
+    // Filtrar el array en base al id del cliente
     const datosFiltrados = arrayDatos.filter(
       (item) => item.customer_id === Number(id)
     );
@@ -42,6 +41,7 @@ async function fetchPrestamo(id) {
   }
 }
 
+//Funcion que engloba lo que voy a mostrar en pantalla
 function ResultadoConsulta({ data }) {
   console.log(data.apiDataPrestamo);
   console.log(data.apiDataPrestamo.account_id);
@@ -72,6 +72,7 @@ function ResultadoConsulta({ data }) {
   );
 }
 
+//Funcion principal
 function ConsultarApiPrestamo() {
   const router = useRouter();
   const { id } = router.query;

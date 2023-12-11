@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import "@/components/styles/Cuentas.module.css";
 import Footer from "../../components/Footer";
 
-//Datos de la sucursal
+//Datos de todas las sucursales
 async function fetchSucursal() {
   try {
     // Realizar la solicitud a la API

@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import "@/components/styles/Cuentas.module.css";
 import Footer from "../../components/Footer";
 
-//Datos de la sucursal
+//Obtengo los datos de la sucursal provenientes de la API
 async function fetchSucursal(id) {
   try {
     // Realizar la solicitud a la API utilizando el ID ingresado
@@ -49,12 +49,12 @@ async function fetchPrestamo(clientes) {
     const response = await fetch(`http://127.0.0.1:8000/myapp/api/v1/prestamo`);
     const data = await response.json();
 
-    // Convertir los valores del objeto a un array
+    // Convert los valores del objeto a un array
     const prestamo = Object.values(data);
     console.log(prestamo);
 
     const prestamosVinculados = clientes.map((cliente) => {
-      // Filtra los préstamos correspondientes al cliente actual
+      // Filtro los préstamos correspondientes al cliente actual
       const prestamosConCliente = prestamo.filter(
         (prestamosCliente) =>
           prestamosCliente.customer_id == cliente.customer_id
