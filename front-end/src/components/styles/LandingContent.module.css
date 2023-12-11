@@ -1,0 +1,235 @@
+.main {
+    width: 100%;
+    background-color: #f4f4f4;
+    font-family: 'Public Sans', sans-serif;
+    color: black;
+}
+
+.swiper {
+    width: 80% !important;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    border-radius:20px;
+}
+
+.swiperSlide {
+    background: rgb(219,88,96);
+    background: linear-gradient(4deg, rgba(219,88,96,1) 0%, rgba(246,144,150,1) 0%, rgba(255,255,255,1) 46%);
+    border-top: none;
+}
+
+.swiperSlide2 {
+    background: rgb(87,179,238);
+    background: linear-gradient(4deg, rgba(87,179,238,1) 0%, rgba(87,179,238,1) 0%, rgba(255,255,255,1) 46%);
+    border-top: none;
+}
+
+.swiperSlide3 {
+    background: rgb(238,175,87);
+    background: linear-gradient(4deg, rgba(238,175,87,0.938813025210084) 0%, rgba(255,223,132,1) 0%, rgba(252,243,229,1) 46%);
+    border-top: none;
+}
+
+.swiperSlide div {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.swiperContenido {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content:center;
+}
+
+.swiperImg img {
+    width: 70%;
+}
+
+.swiperButton button {
+    background-color: #DB5860;
+    border: none;
+    height: 40px;
+    width:200px;
+    border-radius: 10px;
+    font-size: medium;
+    color: white;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.swiperButton button:hover {
+    background-color: #f62432;
+    transition: .5s;
+}
+
+.itemIcon {
+  background-color: white;
+  border-radius: 20px;
+  width: 150px;
+  cursor: pointer;
+}
+
+.itemIcon:hover {
+  border-radius: 20px;
+  background: #db586176;
+  box-shadow:  20px 20px 60px #949494,
+               -20px -20px 60px #ffffff;
+               font-weight: bold;
+               transition: .5s;
+  color: white ;
+}
+
+.itemImg {
+  width: 30%;
+}
+
+.itemLink {
+  text-decoration: none;
+}
+
+.itemText:hover {
+  color: white;
+  transition: .5s;
+}
+
+.divisor {
+  margin-top: 100px;
+  height: 180px;
+  border-radius: 0px;
+  background: rgb(255, 255, 255);
+  box-shadow:  41px 41px 83px #dcdcdc,
+               -41px -41px 83px #e4e4e4;
+}
+
+.divisorContenido img {
+  width: 15%;
+}
+
+.divisorContenido button {
+  width: 150px;
+  height: 60px;
+  border: none;
+  background-color: #DB5860;
+  color: white;
+}
+
+.divisorContenido button:hover, .divisorContenido button:focus {
+  box-shadow: inset 400px 0 0 0 #c53d46;
+  transition: 2s;
+}
+
+@media (319px < width < 960px ) {
+  .divisor {
+    height: fit-content;
+  }
+  .divisorContenido {
+    flex-direction: column;
+    gap: 20px !important;
+    text-align: center;
+  }
+}
+
+.seccionFinanzas {
+  margin-top: 150px;
+}
+
+.finanzasTexto h2 {
+  font-size: 40px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: .4fr .4fr ;
+  grid-template-rows: .5fr .5fr;
+  grid-template-areas: "contenido1 contenido2"
+  "contenido1 contenido3";
+  gap: 10px;
+  width: 100%;
+}
+
+.contenido1 {
+  grid-area: contenido1;
+  background: rgb(219,88,96);
+  background: linear-gradient(180deg, rgba(219,88,96,1) 0%, rgba(245,140,147,1) 45%, rgba(255,210,213,1) 88%, rgba(255,218,220,1) 99%);
+  border-top: none;
+}
+
+.contenido2 {
+  grid-area: contenido2;
+  background: rgb(219,88,96);
+  background: linear-gradient(90deg, rgba(219,88,96,1) 0%, rgba(245,140,147,1) 45%, rgba(255,210,213,1) 88%, rgba(255,218,220,1) 99%);
+  border-top: none;
+}
+
+.contenido3 {
+  grid-area: contenido3;
+  background: rgb(219,88,96);
+background: linear-gradient(90deg, rgba(219,88,96,1) 0%, rgba(245,140,147,1) 45%, rgba(255,210,213,1) 88%, rgba(255,218,220,1) 99%);
+}
+
+.contenido1Img {
+  height:75%;
+}
+
+.contenido1Img:hover {
+  backdrop-filter:grayscale(0.5) opacity(0.8);
+  transition: 1s;
+}
+
+.contenido2Img {
+  width: 55%;
+
+}
+
+
+.contenido2Img img{
+  width: 50% !important;
+}
+
+.contenido2Texto a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contenido3Img {
+  width: 80%;
+}
+
+
+.contenido3Img img {
+  width: 60% !important;
+}
+
+
+@media (992px > width) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "contenido1"
+    "contenido2"
+    "contenido3";
+  }
+
+}
+
+.conversor-texto h2 {
+  font-weight: bolder;
+  font-size: 40px !important;
+}
+
+.conversor-texto img {
+  width: 30%;
+}
+
+.conversor-area {
+  height:250px;
+  background: rgb(219,88,96);
+background: linear-gradient(90deg, rgba(219,88,96,1) 0%, rgba(245,140,147,1) 45%, rgba(255,210,213,1) 88%, rgba(255,218,220,1) 99%);
+}
+
+
+

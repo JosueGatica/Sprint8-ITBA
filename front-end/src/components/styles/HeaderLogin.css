@@ -1,0 +1,31 @@
+.i {
+    color: red;
+}
+
+.t {
+    color: yellow;
+}
+
+.b {
+    color: green;
+}
+
+.a {
+    color: aqua;
+}
+
+header {
+    height: 7vh;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    width: 100vw;
+}
+
+header > h2 {
+    color: #DB5860;
+    font-size: xxx-large;
+    font-family: 'Bebas Neue', sans-serif;
+}

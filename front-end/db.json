@@ -1,0 +1,116 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "monto": "4000",
+      "desde": "VIN-01",
+      "hacia": "VIN-02",
+      "motivo": "varios",
+      "fecha": "27-09-23"
+    },
+    {
+      "id": 2,
+      "monto": "200",
+      "desde": "VIN-02",
+      "hacia": "VIN-01",
+      "motivo": "pago",
+      "fecha": "27-09-23"
+    },
+    {
+      "id": 3,
+      "monto": "3000",
+      "desde": "VIN-01",
+      "hacia": "VIN-02",
+      "motivo": "varios",
+      "fecha": "27-09-23"
+    },
+    {
+      "desde": "vin-1111",
+      "hacia": "vin-01",
+      "monto": "2",
+      "motivo": "probando",
+      "fecha": "30/9/2023",
+      "id": 26
+    },
+    {
+      "desde": "vin-1111",
+      "hacia": "vin-01",
+      "monto": "2",
+      "motivo": "probando",
+      "fecha": "30/9/2023",
+      "id": 27
+    },
+    {
+      "desde": "vin-1",
+      "hacia": "vin-34",
+      "monto": "55",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 28
+    },
+    {
+      "desde": "vin-1",
+      "hacia": "vin-34",
+      "monto": "55",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 29
+    },
+    {
+      "desde": "vin-1",
+      "hacia": "vin-34",
+      "monto": "55",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 30
+    },
+    {
+      "desde": "vin-5",
+      "hacia": "vin-1",
+      "monto": "4",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 31
+    },
+    {
+      "desde": "vin-5",
+      "hacia": "vin-1",
+      "monto": "4",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 32
+    },
+    {
+      "desde": "vin-5",
+      "hacia": "vin-1",
+      "monto": "4",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 33
+    },
+    {
+      "desde": "vin-5",
+      "hacia": "vin-1",
+      "monto": "4",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 34
+    },
+    {
+      "desde": "vin-5",
+      "hacia": "vin-1",
+      "monto": "4",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 35
+    },
+    {
+      "desde": "vin-5",
+      "hacia": "vin-1",
+      "monto": "4",
+      "motivo": "si",
+      "fecha": "30/9/2023",
+      "id": 36
+    }
+  ]
+}

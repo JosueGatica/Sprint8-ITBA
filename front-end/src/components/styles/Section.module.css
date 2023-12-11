@@ -1,0 +1,40 @@
+#iniciarsesion{
+    padding-bottom: 5%;
+    color: #DB5860;
+}
+
+/*.label-h2{
+    color: #DB5860;
+    font-size: x-large;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+header {
+    height: 7vh;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    position: fixed;
+    top: 10%;
+    width: 100vw;
+}
+
+header > h2 {
+    color: #DB5860;
+    font-size: xxx-large;
+}*/
+
+.label-h2 {
+    color: #DB5860;
+    font-size: x-large;
+  }
+  
+.label {
+    color: #DB5860;
+    font-size: x-large;
+}
+  
+.heading-2 {
+    color: #DB5860;
+    font-size: x-large;
+}

@@ -1,0 +1,165 @@
+/* Estilos para FAQItem */
+.accordion-header {
+  cursor: pointer;
+  background-color: #020B12;
+  padding: 10px;
+  border-bottom: 1px solid #DB5860;
+}
+  
+.accordion-header button {
+  background-color: transparent;
+  color: #DB5860;
+  font-size: 16px;
+  padding: 0px;
+  border-radius: 0;
+}
+
+.accordion-header button:hover {
+  color: white;
+  text-decoration: underline;
+}
+  
+.accordion-body {
+  background-color: #020B12;
+  color: white;
+  line-height: 2.0;
+  display: none; /* Inicialmente oculto */
+}
+
+.accordion-body.open {
+  display: block; /* Muestra cuando está abierto */
+}
+
+p {
+  color: #DB5860;
+}
+  
+  /* Estilos para FAQSection */
+  .accordion-item {
+    margin-bottom: 20px;
+  }
+  
+  .accordion-button {
+    background-color: #020B12;
+    color: #DB5860;
+  }
+  
+  .accordion-button:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .accordion-collapse {
+    background-color: #020B12;
+    color: white;
+  }
+  
+  .accordion-body p {
+    color: #DB5860;
+  }
+  
+  /* Estilos para Navbar */
+  .nav {
+    height: 10vh;
+    width: 100%;
+    background-color: #020B12;
+    position: relative;
+  }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  .nav > .nav-header > .nav-title img {
+    padding-left: 5px;
+    height: 7vh;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #DB5860;
+  }
+  
+  .nav > .nav-links > a::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 0%;
+    background-color: #DB5860;
+    position: absolute;
+    transition: all ease-in-out .5s;
+    margin: 1.1% 0 0 0;
+  }
+  
+  .nav > .nav-links > a:hover::before {
+    width: 1%;
+  }
+  
+  .nav > .nav-links > a[href="#"]{
+    color: white;
+    border-top: 1px #DB5860 solid;
+    box-shadow: inset 0px 111px 64px -134px rgba(255,255,255,1);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:630px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: #020B12;
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 50px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  
+  

@@ -1,0 +1,26 @@
+.footer {
+    height: 7vh;
+    display: flex;
+    background-color: #020B12;
+
+  }
+  
+  .footerText a {
+    color: #DB5860;
+    text-decoration: none;
+  }
+  
+  .footerImg img {
+    height: 25px;
+    width: 25px;
+  }
+  
+  @media (width < 600px) {
+      .footer {
+          height: fit-content;
+      }
+      .footer-text {
+          flex-direction: column;
+          gap: 1rem !important;
+      }
+  }
