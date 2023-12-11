@@ -42,9 +42,32 @@ async function fetchDataCuenta(id) {
   }
 }
 
+async function fetchTarjetas(clientes){
+  try {
+    // Realizar la solicitud a la API
+    const response = await fetch(`http://127.0.0.1:8000/myapp/api/v1/tarjeta`);
+    const data = await response.json();
+
+    // Convertir los valores del objeto a un array
+    const arrayDatos = Object.values(data);
+
+    // Filtrar el array
+    const datosFiltrados = arrayDatos.filter(
+      (item) => item.id === clientes.tarjeta
+    );
+
+    console.log(datosFiltrados)
+
+    return datosFiltrados;
+  } catch (error) {
+    console.error("Error al consultar la API:", error);
+    throw new Error("Ocurrió un error al consultar la API en cuenta.");
+  }
+}
+
 function ResultadoConsulta({ data }) {
-  console.log(data.apiDataCuenta);
-  console.log(data.apiDataCuenta.account_id);
+  //console.log(data.apiDataCuenta);
+  //console.log(data.apiDataCuenta.account_id);
   return (
     <>
       <div>
@@ -69,6 +92,20 @@ function ResultadoConsulta({ data }) {
           <hr />
         </div>
       ))}
+      <hr />
+      <h2>Tarjetas vinculadas</h2>
+      <hr />
+      {data.apiDataTarjeta.map((tarjeta) => (
+        <div key={tarjeta.id}>
+          <p>Numero: {tarjeta.numero}</p>
+          <p>CVV: {tarjeta.cvv}</p>
+          <p>Fecha otorgamiento: {tarjeta.fechaotorgamiento}</p>
+          <p>Fecha expiracion: {tarjeta.fechaexpiracion}</p>
+          <p>Tipo de tarjeta: {tarjeta.tipotarjeta}</p>
+          <p>Marca tarjeta: {tarjeta.marcatarjeta}</p>
+          <hr />
+        </div>
+      ))}
     </>
   );
 }
@@ -80,14 +117,20 @@ function ConsultaAPI() {
   const [inputId, setInputId] = useState(id || "");
   const [apiData, setApiData] = useState(null);
   const [apiDataCuenta, setApiDataCuenta] = useState(null);
+  const [apiDataTarjeta, setApiDataTarjeta] = useState(null);
 
   const consultarAPI = async () => {
     try {
       const data = await fetchData(inputId);
       setApiData(data);
+
       const dataCuenta = await fetchDataCuenta(inputId);
       //console.log(dataCuenta)
       setApiDataCuenta(dataCuenta);
+
+      const dataTarjeta = await fetchTarjetas(apiData);
+      setApiDataTarjeta(dataTarjeta);
+
     } catch (error) {
       alert(error.message);
     }
@@ -109,8 +152,8 @@ function ConsultaAPI() {
           Consultar
         </button>
         <div>
-          {apiData && apiDataCuenta && (
-            <ResultadoConsulta data={{ apiData, apiDataCuenta }} />
+          {apiData && apiDataCuenta && apiDataTarjeta && (
+            <ResultadoConsulta data={{ apiData, apiDataCuenta, apiDataTarjeta }} />
           )}
         </div>
         <div></div>

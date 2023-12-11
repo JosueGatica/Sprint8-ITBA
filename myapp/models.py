@@ -9,7 +9,7 @@ class Cliente(models.Model):
     dob = models.TextField(blank=True, null=True)
     branch_id = models.IntegerField()
     tipocliente = models.ForeignKey('Tipocliente', models.DO_NOTHING, db_column='tipoCliente', blank=True, null=True)  # Field name made lowercase.
-    tarjeta = models.ForeignKey('Tarjeta', models.DO_NOTHING, db_column='tarjeta', to_field='numero', blank=True, null=True)
+    tarjeta = models.ForeignKey('Tarjeta', models.DO_NOTHING, db_column='tarjeta', to_field='id', blank=True, null=True)
 
     class Meta:
         managed = False
